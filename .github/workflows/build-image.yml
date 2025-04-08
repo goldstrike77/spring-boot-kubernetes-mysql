@@ -21,11 +21,13 @@ jobs:
       - name: Specifying the Java version and architecture
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
+          java-version: '21'
           distribution: 'temurin'
           architecture: x64
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
+      - name: Generate and submit dependency graph
+        uses: gradle/actions/dependency-submission@v4
       - name: Build with Gradle
         run: ./gradlew build
       - name: Extract branch name
